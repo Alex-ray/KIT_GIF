@@ -66,3 +66,8 @@ export const renderPage = (req, res) => {
   });
 
 }
+
+export const renderDevPage = (req, res) => {
+  const store = createStore( );
+  renderApp(res, store);
+};
