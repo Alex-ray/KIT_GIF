@@ -29,6 +29,13 @@ export default {
     modules: [src, 'node_modules']
   },
   plugins: [
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        postcss: [
+          require('postcss-cssnext')
+        ]
+      }
+    }),
     new webpack.NoEmitOnErrorsPlugin(),
     new ExtractTextPlugin('[name].css'),
     new webpack.optimize.UglifyJsPlugin({compressor: {warnings: false}}),
@@ -47,20 +54,23 @@ export default {
         include: serverInclude,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          loader: {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              importLoaders: 1,
-              localIdentName: '[name]_[local]_[hash:base64:5]'
-            }
-          }
+          loader: [
+            {
+              loader: 'css-loader',
+              query: {
+                modules: true,
+                importLoaders: 1,
+                localIdentName: '[name]_[local]_[hash:base64:5]'
+              }
+            },
+            'postcss-loader'
+          ]
         })
       },
 
       {
         test: /\.js$/,
-        use: {loader: 'babel-loader'},
+        loader: 'babel-loader',
         include: serverInclude
       }
 

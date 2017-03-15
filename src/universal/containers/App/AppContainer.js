@@ -1,16 +1,15 @@
 import React, {Component, PropTypes} from 'react';
 
-import './app.css';
+import 'universal/styles/index.css';
 
 class AppContainer extends Component {
-  static propTypes = {};
+  static propTypes = {
+    children: PropTypes.element.isRequired
+  };
 
   render () {
-    return (
-      <div><h1>Hello World!</h1></div>
-    );
+    return (this.props.children);
   }
-
 }
 
 export default AppContainer;

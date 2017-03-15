@@ -40,12 +40,20 @@ export default {
     publicPath: '/static/'
   },
   plugins: [
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        postcss: [
+          require('postcss-cssnext'),
+        ]
+      }
+    }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({
       '__CLIENT__': true,
       '__PRODUCTION__': false,
+      'process.env.GIPHY_KEY': 'c6zaTOxFJmzC',
       'process.env.NODE_ENV': JSON.stringify('development')
     }),
   ],
@@ -69,13 +77,14 @@ export default {
        test: /\.css$/,
        include: clientInclude,
        use: [
-         {loader: 'style-loader'},
-         {loader: 'css-loader', options: {
+         'style-loader',
+         { loader: 'css-loader', options: {
            modules: true,
            importLoaders: 1,
            localIdentName: '[path][name]-[local]'
           }
-        }
+        },
+        'postcss-loader'
        ]
      }
     ]

@@ -49,8 +49,7 @@ class HTML extends Component {
      <html>
        <head>
          <meta charSet="utf-8"/>
-         <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet" />
-          <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet" />
+          <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto|Material+Icons" rel="stylesheet" />
 
          <title>{title}</title>
        </head>

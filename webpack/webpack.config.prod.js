@@ -4,8 +4,8 @@ import qs from 'querystring';
 
 import AssetsPlugin from 'assets-webpack-plugin';
 
-const root = process.cwd();
-const src  = path.join(root, 'src');
+const root  = process.cwd();
+const src   = path.join(root, 'src');
 const build = path.join(root, 'build');
 
 const client = path.join(src, 'client');
@@ -35,6 +35,13 @@ export default {
   },
   plugins: [
    new webpack.NamedModulesPlugin(),
+   new webpack.LoaderOptionsPlugin({
+      options: {
+          postcss: [
+            require('postcss-cssnext'),
+          ]
+      }
+    }),
    new webpack.optimize.CommonsChunkPlugin({
      names: ['vendor', 'manifest'],
      minChunks: Infinity
@@ -56,7 +63,7 @@ export default {
        test: /\.css$/,
        include: clientInclude,
        use: [
-         {loader: 'style-loader'},
+         'style-loader',
          {
            loader: 'css-loader',
            options: {
@@ -65,22 +72,13 @@ export default {
              localIdentName: '[name]_[local]_[hash:base64:5]'
            }
          },
-         {
-           loader: 'postcss-loader',
-           options: {
-             plugins: function () {
-               return [
-                 require("postcss-cssnext")()
-               ];
-             }
-           }
-         }
-       ],
+         'postcss-loader'
+       ]
      },
 
      {
        test: /\.js$/,
-       use: 'babel-loader',
+       loader: 'babel-loader',
        include: clientInclude
      }
    ]
