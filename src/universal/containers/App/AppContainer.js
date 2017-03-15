@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react';
+import {Link} from 'react-router';
 
 import 'universal/styles/index.css';
 
@@ -8,7 +9,12 @@ class AppContainer extends Component {
   };
 
   render () {
-    return (this.props.children);
+    return (
+      <div>
+        <Link to={{pathname: '/favorites'}}>Favorites</Link>
+        {this.props.children}
+      </div>
+    );
   }
 }
 
