@@ -2,21 +2,36 @@ import React, {PropTypes, Component} from 'react';
 
 class Search extends Component {
   static propTypes = {
-    value: PropTypes.string
+    value: PropTypes.string,
+    handleSubmit: PropTypes.func
   };
 
-  handleSubmit (event) {
-
+  constructor (props) {
+    super(props);
+    this.state = {
+      value: props.value ? props.value : ''
+    };
   }
 
-  handleChange (event) {
+  handleSubmit = (event) => {
+    if (this.props.onSubmit) {
+      this.props.onSubmit(event, this.state.value);
+    }
+  }
 
+  handleChange = (event) => {
+    let value = event.target.value;
+    if (this.props.onChange) {
+      this.props.onChange(event, this.state.value);
+    }
+
+    this.setState({value: value});
   }
 
   render () {
     const {
       value
-    } = this.props;
+    } = this.state;
 
     return (
       <form onSubmit={this.handleSubmit}>
