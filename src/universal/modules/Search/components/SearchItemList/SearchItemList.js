@@ -2,11 +2,13 @@
 import React, {PropTypes, Component} from 'react';
 import {Link} from 'react-router';
 
+// Components
+import GifCard from 'universal/components/GifCard/GifCard.js';
+
 // Styles
 import {
   list,
-  listItem,
-  flexImage
+  listItem
 } from './search-item-list.css';
 
 class SearchItemList extends Component {
@@ -23,7 +25,7 @@ class SearchItemList extends Component {
       list.push(
         <li key={item.id} className={listItem}>
           <Link to={{pathname: `/${query}/${item.id}`}}>
-            <img className={flexImage} src={item.images.original.url} />
+            <GifCard gifUrl={item.images.original.url} previewUrl={item.images.original_still.url}/>
           </Link>
         </li>
       );

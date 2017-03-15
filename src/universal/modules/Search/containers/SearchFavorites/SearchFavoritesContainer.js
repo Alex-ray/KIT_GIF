@@ -5,6 +5,9 @@ import {connect} from 'react-redux';
 // Components
 import SearchFavorites from 'universal/modules/Search/components/SearchFavorites/SearchFavorites.js';
 
+// Containers
+import SearchFormContainer from 'universal/modules/Search/containers/SearchForm/SearchFormContainer.js';
+
 @connect(mapStateToProps, mapDispatchToProps)
 class SearchFavoritesContainer extends Component {
   static propTypes = {
@@ -13,7 +16,9 @@ class SearchFavoritesContainer extends Component {
   };
 
   render ( ) {
-    return (<SearchFavorites source={this.props.favorites} query={this.props.query}/>);
+    return (
+      <SearchFavorites source={this.props.favorites} query={this.props.query}/>
+    );
   }
 }
 

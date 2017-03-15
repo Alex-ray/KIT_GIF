@@ -3,13 +3,28 @@ import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import moment from 'moment';
 
+// Components
+import GifCard from 'universal/components/GifCard/GifCard.js';
+
 // Ducks
 import {
   setSearchQuery,
   fetchSearchQuery,
   favoriteItem,
-  unfavoriteItem
+  toSearchPageItem,
+  unfavoriteItem,
+  shuffle
 } from 'universal/modules/Search/ducks/search.js';
+
+
+// Styles
+import {
+  contentWidth
+} from 'universal/styles/layout.css';
+
+import {
+  primaryButton
+} from 'universal/styles/buttons.css';
 
 @connect(mapStateToProps, mapDispatchToProps)
 class SearchItemContainer extends Component {
@@ -21,6 +36,7 @@ class SearchItemContainer extends Component {
     item: PropTypes.object,
     favorite: PropTypes.bool,
     searchQuery: PropTypes.string,
+    queryItems: PropTypes.object,
     // Actions
     favoriteItem: PropTypes.func.isRequired,
     unfavoriteItem: PropTypes.func.isRequired,
@@ -71,27 +87,54 @@ class SearchItemContainer extends Component {
     }
   }
 
+  shuffleGif = () => {
+    const {
+      item,
+      searchQuery,
+      queryItems
+    } = this.props;
+
+    let currentId   = item.id;
+    let ids         = queryItems[searchQuery];
+    let nextIdIndex = Math.floor(Math.random()*(ids.length-1));
+
+    while (ids[nextIdIndex] === currentId && ids[nextIdIndex] !== -1) {
+      nextIdIndex = Math.floor(Math.random()*(ids.length-1));
+    }
+
+    this.props.toSearchPageItem(searchQuery, ids[nextIdIndex]);
+  }
+
   render () {
     const {
       item,
       favorite,
       loading,
       favoriteItem,
-      unfavoriteItem
+      unfavoriteItem,
+      shuffle
     } = this.props;
 
     let url = item.images ? item.images.original.url : '';
+    let previewUrl = item.images ? item.images.original_still.url : '';
+    let source = item.source;
+    let rating = item.rating;
+    let date   = item.import_datetime;
 
     return (
-      <section>
-        {loading && <h1>Loading...</h1>}
-        <img src={url} />
-        <ul>
-          <li>Source: {item.source && item.source}</li>
-          <li>Rating: {item.rating && item.rating}</li>
-          <li>{item.import_datetime && moment(new Date(item.import_datetime)).fromNow()}</li>
-          <li><i onClick={this.toggleFavorite} className='material-icons'>{favorite ? 'favorite' : 'favorite_border'}</i></li>
-        </ul>
+      <section className={contentWidth}>
+        <GifCard
+          gifUrl={url}
+          showInfo={true}
+          loop={true}
+          previewUrl={previewUrl}
+          source={source}
+          rating={rating}
+          date={date}
+          favorite={favorite}
+          toggleFavorite={this.toggleFavorite}
+        />
+        <input className={primaryButton} type='button' value='Shuffle' onClick={this.shuffleGif}/>
       </section>
     );
   }
@@ -99,17 +142,18 @@ class SearchItemContainer extends Component {
 }
 
 function mapStateToProps(state, ownProps) {
-  let stateJS = state.get('search').toJS();
+  let searchState = state.get('search').toJS();
 
   let id = ownProps.params.id;
-  let items = stateJS.items || {};
+  let items = searchState.items || {};
 
   let loading  = !items[id];
-  let favorite = !!(stateJS.favorites.indexOf(id) !== -1);
+  let favorite = !!(searchState.favorites.indexOf(id) !== -1);
 
   return {
-    searchQuery: stateJS['query'],
+    searchQuery: searchState['query'],
     params: ownProps.params,
+    queryItems: searchState.queryItems,
     item: items[id] || {},
     loading: loading,
     favorite: favorite
@@ -118,13 +162,11 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    favoriteItem: () => {console.log('TODO: favoriteItem')},
-    unfavoriteItem: () => {console.log('TODO: unfavoriteItem')},
     fetchSeachQuery: fetchSearchQuery(dispatch),
     setSearchQuery: setSearchQuery(dispatch),
     favoriteItem: favoriteItem(dispatch),
-    unfavoriteItem: unfavoriteItem(dispatch)
-
+    unfavoriteItem: unfavoriteItem(dispatch),
+    toSearchPageItem: toSearchPageItem(dispatch)
   };
 }
 

@@ -12,17 +12,24 @@ import {
 
 class Navigation extends Component {
   static propTypes = {
-    routes: PropTypes.object,
-    params: PropTypes.object
+    routes: PropTypes.array,
+    params: PropTypes.object,
+    location: PropTypes.object
   };
   render () {
+    let isOnFavoritePage = this.props.location.pathname === '/favorites';
+
+    let actionLink = isOnFavoritePage ?
+      <Link className={favoritesLink} to={{pathname: '/'}}>search</Link>:
+      <Link className={favoritesLink} to={{pathname: '/favorites'}}>favorites</Link> ;
+
     return (
       <nav className={navigationContainer}>
-        <Link className={favoritesLink} to={{pathname: '/favorites'}}>favorites</Link>
+        {actionLink}
         <Breadcrumbs
           routes={this.props.routes}
           params={this.props.params}
-          separator={'    '}
+          separator={''}
           wrapperClass={breadcrumbsLinkContainer}
           itemClass={breadcrumbsLink}/>
       </nav>

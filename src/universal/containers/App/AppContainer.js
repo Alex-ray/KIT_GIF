@@ -18,7 +18,7 @@ import {
 class AppContainer extends Component {
   static propTypes = {
     children: PropTypes.element.isRequired,
-    loading: PropTypes.bool,
+    loading: PropTypes.bool
   };
 
   render () {
@@ -26,12 +26,13 @@ class AppContainer extends Component {
     const {
       loading,
       routes,
-      params
+      params,
+      location
     } = this.props;
 
     return (
       <div className={fullHeight}>
-        <Navigation routes={routes} params={params} />
+        <Navigation routes={routes} params={params} location={location} />
         <Loader show={loading}/>
         {this.props.children}
       </div>

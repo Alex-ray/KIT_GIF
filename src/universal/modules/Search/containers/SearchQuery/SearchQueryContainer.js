@@ -2,8 +2,7 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 
-//
-// import SearchForm from 'universal/modules/Search/components/SearchForm/SearchForm.js';
+// Components
 import SearchResults from 'universal/modules/Search/components/SearchResults/SearchResults.js';
 
 // Ducks

@@ -1,0 +1,36 @@
+@import 'universal/styles/variables.css';
+
+:root {
+  --button: {
+    @apply --reset;
+
+    margin: 0;
+    padding: var(--input-padding);
+
+    border-radius: 2px;
+    tex-decoration: none;
+    border: none;
+    font-family: var(--preferred-font);
+    font-size:  var(--font-size-small);
+
+    background-color: var(--palette-blue-grey-500);
+    color: var(--palette-blue-grey-50);
+
+    transition: background-color 350ms ease-in-out;
+
+    box-shadow: var(--shadow-2p);
+
+    &:focus, &:active {
+      outline: none;
+    }
+
+    &:focus, &:hover {
+      cursor: pointer;
+      background-color: var(--palette-blue-500);
+    }
+  }
+}
+
+.primaryButton {
+  @apply --button;
+}

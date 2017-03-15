@@ -1,6 +1,14 @@
 @import 'universal/styles/colors.css';
 @import 'universal/styles/variables.css';
 
+:root {
+  --overflow-ellipsis: {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
+
 .title {
   color: var(--color-text);
 
@@ -8,4 +16,18 @@
   font-size: 42px;
   font-weight: var(--font-weight-semi-bold);
   text-transform: capitalize;
+
+  margin: calc(var(--unit)*4) 0;
+}
+
+
+.description {
+  color: var(--color-text);
+
+  font-family: var(--preferred-font);
+  font-size: 28px;
+  font-weight: var(--font-weight-semi-bold);
+  text-transform: capitalize;
+
+  margin: calc(var(--unit)*4) 0;
 }

@@ -140,6 +140,12 @@ export function toSearchPage(dispatch) {
   };
 }
 
+export function toSearchPageItem(dispatch) {
+  return function (query, id) {
+    dispatch(push({pathname: '/'+query+'/'+id}));
+  };
+}
+
 export function favoriteItem(dispatch) {
   return function (id) {
     dispatch({

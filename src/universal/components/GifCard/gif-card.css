@@ -1,0 +1,55 @@
+@import 'universal/styles/variables.css';
+@import 'universal/styles/typography.css';
+
+.card {
+  position: relative;
+  overflow: hidden;
+  padding: var(--gutter-padding);
+  margin: var(--gutter-padding) auto;
+  box-shadow: var(--shadow-2p);
+  border-radius: 2px;
+  background: var(--palette-grey-50);
+
+  &:hover {
+    box-shadow: var(--shadow-3p);
+  }
+}
+
+.flexImage {
+  border-radius: 2px;
+  min-width: 100%;
+  min-height: 250px;
+  max-width: 100%;
+  width: 100%;
+}
+
+.infoList {
+  color: var(--color-text);
+  font-family: var(--preferred-font);
+  text-decoration: none;
+  font-size: var(--font-size-small);
+
+  & > li {
+    line-height: 1.5em;
+    @apply --overflow-ellipsis;
+    margin: calc(var(--gutter-padding)/2) 0;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  & > li > a {
+    @apply --reset;
+    @apply --link;
+    border-bottom-width: 2px;
+  }
+}
+
+.favoriteItem {
+  color: var(--color-text);
+  text-decoration: none;
+  position: absolute;
+  bottom: var(--gutter-padding);
+  right: var(--gutter-padding);
+}

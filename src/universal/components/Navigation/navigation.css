@@ -13,6 +13,10 @@
   top: calc(var(--gutter-padding) * 2);
   left: calc(var(--gutter-padding) );
 
+  & span {
+    margin-right: var(--gutter-padding);
+  }
+
   & span:last-child {
     display: none;
   }
