@@ -1,0 +1,74 @@
+@import 'universal/styles/colors.css';
+@import 'universal/styles/variables.css';
+
+.form {
+  flex: 1;
+  display: flex;
+  max-width: 690px;
+  margin: 0 var(--input-padding);
+}
+
+.input {
+  flex: 0.875;
+  border: none;
+
+  padding: var(--input-padding) 0;
+  margin: 0 var(--input-padding);
+  font-family: var(--preferred-font);
+  font-size:  var(--font-size-big);
+
+  @apply --reset;
+
+  color: var(--color-text);
+  ouline: none;
+
+  border-bottom: solid 3px var(--palette-blue-grey-500);
+
+  transition: border-bottom-color 500ms ease-in-out;
+
+  &:active, &:focus {
+    outline: none;
+  }
+
+  &:focus {
+    border-bottom-color: var(--palette-blue-500);
+  }
+}
+
+.submit {
+  @apply --reset;
+
+  flex: 0.125;
+  margin: 0 var(--input-padding);
+  border-radius: 2px;
+  tex-decoration: none;
+  border: none;
+  padding: var(--input-padding) 0;
+  font-family: var(--preferred-font);
+  font-size:  var(--font-size-big);
+
+  background-color: var(--palette-blue-grey-500);
+  color: var(--palette-blue-grey-50);
+
+  transition: background-color 350ms ease-in-out;
+
+  &:focus, &:active {
+    outline: none;
+  }
+
+  &:focus, &:hover {
+    cursor: pointer;
+    background-color: var(--palette-blue-500);
+  }
+}
+
+
+@media (--tablet) {
+  .form {
+    flex-direction: column;
+  }
+
+  .submit {
+    margin-top: calc(2*var(--input-padding));
+  }
+}

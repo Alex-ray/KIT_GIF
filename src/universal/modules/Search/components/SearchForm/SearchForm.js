@@ -1,5 +1,11 @@
 import React, {PropTypes, Component} from 'react';
 
+import {
+  form,
+  input,
+  submit
+} from './search-form.css';
+
 class Search extends Component {
   static propTypes = {
     value: PropTypes.string,
@@ -34,9 +40,9 @@ class Search extends Component {
     } = this.state;
 
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input type='text' value={value} onChange={this.handleChange} placeholder='search' />
-        <input type='submit' />
+      <form className={form} onSubmit={this.handleSubmit}>
+        <input className={input} type='text' value={value} onChange={this.handleChange} placeholder='search' />
+        <input className={submit} value='Search' type='submit' />
       </form>
     );
   }

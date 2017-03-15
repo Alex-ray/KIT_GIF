@@ -3,6 +3,10 @@ import {Link} from 'react-router';
 
 import 'universal/styles/index.css';
 
+import {
+  fullHeight
+} from 'universal/styles/layout.css';
+
 class AppContainer extends Component {
   static propTypes = {
     children: PropTypes.element.isRequired

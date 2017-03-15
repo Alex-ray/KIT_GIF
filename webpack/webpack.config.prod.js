@@ -38,7 +38,8 @@ export default {
    new webpack.LoaderOptionsPlugin({
       options: {
           postcss: [
-            require('postcss-cssnext'),
+            require('postcss-import')({path: src}),
+            require('postcss-cssnext')
           ]
       }
     }),

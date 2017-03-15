@@ -1,3 +1,7 @@
 @import "universal/styles/colors.css";
 @import "universal/styles/variables.css";
 @import "universal/styles/reset.css";
+
+#root {
+  height: 100vh;
+}

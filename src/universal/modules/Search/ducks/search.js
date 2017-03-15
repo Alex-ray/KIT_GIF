@@ -4,6 +4,8 @@ import fetch from 'isomorphic-fetch';
 
 export const SEARCH_SET_QUERY = 'SEARCH_SET_QUERY';
 export const SEARCH_ADD_ITEM  = 'SEARCH_ADD_ITEM';
+export const SEARCH_QUERY_LOADING = 'SEARCH_QUERY_LOADING';
+export const SEARCH_QUERY_LOADING_FINISHED = 'SEARCH_QUERY_LOADING_FINISHED';
 
 export const SEARCH_FAVORITE_ITEM = 'SEARCH_FAVORITE_ITEM';
 export const SEARCH_UNFAVORITE_ITEM = 'SEARCH_UNFAVORITE_ITEM';
@@ -13,7 +15,8 @@ const initialState = iMap({
   queryItems: {},
   items: {},
   currentItems: [],
-  favorites: []
+  favorites: [],
+  queryLoading: false
 });
 
 export default function reducer(state = initialState, action = {}) {
@@ -22,7 +25,14 @@ export default function reducer(state = initialState, action = {}) {
   const favorites = stateJS.favorites || [];
 
   switch (action.type) {
-
+    case SEARCH_QUERY_LOADING_FINISHED:
+      return state.merge({
+        queryLoading: false
+      });
+    case SEARCH_QUERY_LOADING:
+      return state.merge({
+        queryLoading: true
+      });
     case SEARCH_SET_QUERY:
       return state.merge({
         query: action.query,
@@ -99,6 +109,7 @@ export function setSearchQuery(dispatch) {
 
 export function fetchSearchQuery(dispatch) {
   return function (query) {
+    dispatch({type: SEARCH_QUERY_LOADING});
     const queryStr = query.toLowerCase().replace(' ', '+');
     const url = `http://api.giphy.com/v1/gifs/search?q=${queryStr}&limit=20&api_key=dc6zaTOxFJmzC`;
 
@@ -115,6 +126,8 @@ export function fetchSearchQuery(dispatch) {
           query: query,
           item: res.data[i]
         });
+
+        dispatch({type: SEARCH_QUERY_LOADING_FINISHED});
       }
     })
 
