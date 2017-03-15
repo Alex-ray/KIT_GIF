@@ -75,7 +75,7 @@ SearchQueryContainer.defaultProps = {
 function mapStateToProps (state, ownProps) {
   let searchState = state.get('search').toJS();
 
-  let query = searchState['query'];
+  let query = searchState.query;
 
   return {
     params: ownProps.params,

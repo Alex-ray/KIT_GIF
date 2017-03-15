@@ -1,3 +1,4 @@
+// Libraries
 import React, {PropTypes, Component} from 'react';
 import {Link} from 'react-router';
 import classNames from 'classnames';
@@ -31,7 +32,7 @@ class SearchFavorites extends Component {
     let favoritesEmpty = source.length === 0 ;
 
     return (
-      <aside className={classNames( fullHeight, contentWidth)}>
+      <aside className={classNames(fullHeight, contentWidth)}>
         <h1 className={title}>Favorites</h1>
         {!favoritesEmpty && <SearchItemList source={source} query={query}/>}
         {favoritesEmpty && (

@@ -45,6 +45,7 @@ class SearchFormContainer extends Component {
 
     let isHome = pathname === '/';
 
+    // TODO: Move this into a seperate component so that containers stay stateless
     return (
       <div>
         <div className={classNames(center, transitionHeight, {
@@ -63,6 +64,7 @@ class SearchFormContainer extends Component {
 
 function mapStateToProps (state) {
   let searchState  = state.get('search').toJS();
+
   return {
     query: searchState.query,
     queryLoading: searchState.queryLoading

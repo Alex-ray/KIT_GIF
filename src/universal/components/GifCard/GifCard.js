@@ -69,7 +69,7 @@ class GifCard extends Component {
       }
     } = this;
 
-    let url = (hovering && !loop) ? gifUrl : previewUrl;
+    let url = (hovering || loop) ? gifUrl : previewUrl;
 
     return (
       <div className={card} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>

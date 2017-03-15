@@ -1,6 +1,8 @@
+// Libraries
 import React, {PropTypes, Component} from 'react';
 import classNames from 'classnames';
 
+// Styles
 import {
   form,
   input,

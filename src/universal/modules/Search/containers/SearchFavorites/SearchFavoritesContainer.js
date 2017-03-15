@@ -5,10 +5,7 @@ import {connect} from 'react-redux';
 // Components
 import SearchFavorites from 'universal/modules/Search/components/SearchFavorites/SearchFavorites.js';
 
-// Containers
-import SearchFormContainer from 'universal/modules/Search/containers/SearchForm/SearchFormContainer.js';
-
-@connect(mapStateToProps, mapDispatchToProps)
+@connect(mapStateToProps)
 class SearchFavoritesContainer extends Component {
   static propTypes = {
     favorites: PropTypes.array,
@@ -23,21 +20,18 @@ class SearchFavoritesContainer extends Component {
 }
 
 function mapStateToProps (state) {
-  let stateJS = state.get('search').toJS();
+  let searchState = state.get('search').toJS();
 
-
-  let favorites = stateJS.favorites.map((id) => {
-    return stateJS.items[id];
+  // TODO: It is ineffecient to loop over the favorites every time this function is called,
+  // Move this out of the map state to props and into the reducers.
+  let favorites = searchState.favorites.map((id) => {
+    return searchState.items[id];
   });
 
   return {
-    query: stateJS.query,
+    query: searchState.query,
     favorites: favorites
   };
-}
-
-function mapDispatchToProps (dispatch) {
-  return {};
 }
 
 export default SearchFavoritesContainer;
