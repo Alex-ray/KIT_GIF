@@ -16,32 +16,42 @@ import {
 import {
   center,
   fullHeight,
-  quarterHeight
+  quarterHeight,
+  transitionHeight
 } from 'universal/styles/layout.css'
 
 @connect(mapStateToProps, mapDispatchToProps)
 class SearchFormContainer extends Component {
   static propTypes = {
     queryLoading: PropTypes.bool,
+    query: PropTypes.string,
     // Actions
     handleSearchQuery: PropTypes.func
   };
 
   handleSubmit = (event, value) => {
+    event.stopPropagation();
+    event.preventDefault();
     this.props.handleSearchQuery(value);
   }
 
   render ( ) {
+    const {
+      location: {
+        pathname
+      },
+      query
+    } = this.props;
 
-    let isHome = this.props.location.pathname === '/';
+    let isHome = pathname === '/';
 
     return (
       <div>
-        <div className={classNames(center, {
+        <div className={classNames(center, transitionHeight, {
           [fullHeight]: isHome,
           [quarterHeight]: !isHome
         })}>
-          <SearchForm onSubmit={this.handleSubmit}/>
+          <SearchForm value={query} onSubmit={this.handleSubmit}/>
         </div>
         <div>
           {this.props.children}
@@ -54,6 +64,7 @@ class SearchFormContainer extends Component {
 function mapStateToProps (state) {
   let searchState  = state.get('search').toJS();
   return {
+    query: searchState.query,
     queryLoading: searchState.queryLoading
   };
 }

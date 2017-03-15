@@ -1,0 +1,13 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.listItem {
+  width: 100%;
+}
+
+.flexImage {
+  max-width: 100%;
+  width: 100%;
+}

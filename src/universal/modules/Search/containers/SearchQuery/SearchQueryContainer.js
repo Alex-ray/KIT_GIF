@@ -58,10 +58,14 @@ class SearchQueryContainer extends Component {
         query
       },
       searchQuery,
-      currentItems,
+      currentItems
     } = this.props;
 
-    return (<SearchResults query={searchQuery} source={currentItems}/>);
+    return (
+      <div>
+        {this.props.children || <SearchResults query={searchQuery} source={currentItems}/>}
+      </div>
+    );
   }
 }
 

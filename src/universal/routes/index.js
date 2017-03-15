@@ -4,8 +4,8 @@ export default (store) => {
   return {
     component: AppContainer,
     childRoutes: [
-      require('./landing.js')(store),
-      require('./favorites.js')(store)
+      require('./favorites.js')(store),
+      require('./landing.js')(store)
     ]
   }
 }

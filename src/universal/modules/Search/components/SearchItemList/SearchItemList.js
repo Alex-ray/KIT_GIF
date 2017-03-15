@@ -1,5 +1,13 @@
+// Libraries
 import React, {PropTypes, Component} from 'react';
 import {Link} from 'react-router';
+
+// Styles
+import {
+  list,
+  listItem,
+  flexImage
+} from './search-item-list.css';
 
 class SearchItemList extends Component {
   static propTypes = {
@@ -13,9 +21,9 @@ class SearchItemList extends Component {
     for (var i = 0; i < source.length; i++) {
       let item = source[i];
       list.push(
-        <li key={item.id}>
+        <li key={item.id} className={listItem}>
           <Link to={{pathname: `/${query}/${item.id}`}}>
-            <img src={item.images.original.url} />
+            <img className={flexImage} src={item.images.original.url} />
           </Link>
         </li>
       );
@@ -31,7 +39,7 @@ class SearchItemList extends Component {
     } = this.props;
 
     return (
-      <ul>
+      <ul className={list}>
         {this.getSourceList(source, query)}
       </ul>
     );

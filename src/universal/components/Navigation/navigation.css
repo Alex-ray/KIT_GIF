@@ -1,0 +1,33 @@
+@import 'universal/styles/variables.css';
+
+.favoritesLink {
+  position: fixed;
+  right: var(--gutter-padding);
+  top: var(--gutter-padding);
+}
+
+.breadcrumbsLinkContainer {
+  position: fixed;
+  top: var(--gutter-padding);
+  left: var(--gutter-padding);
+
+  & span:last-child {
+    display: none;
+  }
+}
+
+.favoritesLink, .breadcrumbsLink a {
+  opacity: 1;
+  @apply --reset;
+  @apply --link;
+
+  text-transform: uppercase;
+
+  color: var(--palette-blue-grey-200);
+  border-bottom-color: var(--palette-blue-grey-200);
+
+  &:hover {
+    color: var(--color-text);
+    border-bottom-color: var(--color-text);
+  }
+}

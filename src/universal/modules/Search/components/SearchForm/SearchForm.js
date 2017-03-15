@@ -6,9 +6,9 @@ import {
   submit
 } from './search-form.css';
 
-class Search extends Component {
+class SearchForm extends Component {
   static propTypes = {
-    value: PropTypes.string,
+    query: PropTypes.string,
     handleSubmit: PropTypes.func
   };
 
@@ -17,6 +17,18 @@ class Search extends Component {
     this.state = {
       value: props.value ? props.value : ''
     };
+  }
+
+  componentDidMount () {
+    if (this.props.value) {
+      this.setState({value: this.props.value});
+    }
+  }
+
+  componentDidUpdate (prevProps) {
+    if (prevProps.value !== this.props.value) {
+      this.setState({value: this.props.value});
+    }
   }
 
   handleSubmit = (event) => {
@@ -49,4 +61,4 @@ class Search extends Component {
 }
 
 
-export default Search;
+export default SearchForm;

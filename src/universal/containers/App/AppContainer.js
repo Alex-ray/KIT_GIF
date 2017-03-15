@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 
 // Components
 import Loader from 'universal/components/Loader/Loader.js';
-import Breadcrumbs from 'react-breadcrumbs';
+import Navigation from 'universal/components/Navigation/Navigation.js';
 
 // Styles
 import 'universal/styles/index.css';
@@ -24,15 +24,14 @@ class AppContainer extends Component {
   render () {
 
     const {
-      loading
+      loading,
+      routes,
+      params
     } = this.props;
-
-    console.log('loading : ', loading);
 
     return (
       <div className={fullHeight}>
-        <Link to={{pathname: '/favorites'}}>Favorites</Link>
-        <Breadcrumbs  routes={this.props.routes} params={this.props.params}/>
+        <Navigation routes={routes} params={params} />
         <Loader show={loading}/>
         {this.props.children}
       </div>
