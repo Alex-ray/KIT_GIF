@@ -45,7 +45,7 @@
   border: none;
   padding: var(--input-padding) 0;
   font-family: var(--preferred-font);
-  font-size:  var(--font-size-big);
+  font-size:  var(--font-size-small);
 
   background-color: var(--palette-blue-grey-500);
   color: var(--palette-blue-grey-50);

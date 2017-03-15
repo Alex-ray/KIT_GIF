@@ -6,11 +6,15 @@ import {
 
 export default (store) => {
   return {
+    name: 'Search',
     path: '/',
     getComponent: (nextState, cb) => {
      System.import('universal/modules/Search/containers/SearchForm/SearchFormContainer.js')
            .then(loadRoute(cb))
            .catch(errorLoading)
-    }
+    },
+    childRoutes: [
+      require('./search/query.js')(store)
+    ]
   }
 }

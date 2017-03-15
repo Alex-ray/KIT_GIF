@@ -3,19 +3,26 @@
 
 .showbox {
   position: absolute;
+  display: flex;
+
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 5%;
   opacity: 1;
-  transition: opacity 500ms ease-in-out;
+
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(255,255,255, 0.9);
+  transition: opacity 500ms ease-in-out, bottom 0ms linear 500ms;
 }
 
 .showbox.hidden {
-  top: -100vh;
+  bottom: 100vh;
+  padding: 0;
   opacity: 0;
-  display: none;
+  /*display: none;*/
 }
 
 .loader {

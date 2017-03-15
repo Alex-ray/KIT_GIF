@@ -5,9 +5,7 @@ export default (store) => {
     component: AppContainer,
     childRoutes: [
       require('./landing.js')(store),
-      require('./favorites.js')(store),
-      require('./search/query.js')(store),
-      require('./search/item.js')(store)
+      require('./favorites.js')(store)
     ]
   }
 }

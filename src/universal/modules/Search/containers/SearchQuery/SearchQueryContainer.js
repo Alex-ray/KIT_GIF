@@ -20,7 +20,6 @@ class SearchQueryContainer extends Component {
     }),
     searchQuery: PropTypes.string,
     currentItems: PropTypes.array,
-
     // Actions
     setSearchQuery: PropTypes.func,
     fetchSeachQuery: PropTypes.func
@@ -59,7 +58,7 @@ class SearchQueryContainer extends Component {
         query
       },
       searchQuery,
-      currentItems
+      currentItems,
     } = this.props;
 
     return (<SearchResults query={searchQuery} source={currentItems}/>);

@@ -7,3 +7,7 @@
 .fullHeight {
   height: 100vh;
 }
+
+.quarterHeight {
+  height: 25vh;
+}
