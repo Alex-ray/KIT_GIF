@@ -53,7 +53,6 @@ export default {
     new webpack.DefinePlugin({
       '__CLIENT__': true,
       '__PRODUCTION__': false,
-      'process.env.GIPHY_KEY': 'c6zaTOxFJmzC',
       'process.env.NODE_ENV': JSON.stringify('development')
     }),
   ],
