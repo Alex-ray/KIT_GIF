@@ -1,7 +1,7 @@
 @import 'universal/styles/colors.css';
 
 @custom-media --phone (max-width: 544px);
-@custom-media --tablet (max-width: 768px);
+@custom-media --tablet (max-width: 780px);
 @custom-media --desktop (min-width: 992px);
 @custom-media --large-desktop (min-width: 1200px);
 
@@ -113,7 +113,6 @@
     color: var(--color-text);
     font-family: var(--preferred-font);
     text-decoration: none;
-    line-height: 1.75em;
     font-size: var(--font-size-small);
 
     border-bottom: solid 3px var(--color-text);

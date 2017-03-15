@@ -1,15 +1,17 @@
 @import 'universal/styles/variables.css';
 
+.navigationContainer {}
+
 .favoritesLink {
   position: fixed;
-  right: var(--gutter-padding);
-  top: var(--gutter-padding);
+  right: calc(var(--gutter-padding));
+  top: calc(var(--gutter-padding) * 2);
 }
 
 .breadcrumbsLinkContainer {
   position: fixed;
-  top: var(--gutter-padding);
-  left: var(--gutter-padding);
+  top: calc(var(--gutter-padding) * 2);
+  left: calc(var(--gutter-padding) );
 
   & span:last-child {
     display: none;
@@ -21,6 +23,10 @@
   @apply --reset;
   @apply --link;
 
+  padding: calc(var(--unit)* 0.5) 0;
+
+  background-color: white;
+
   text-transform: uppercase;
 
   color: var(--palette-blue-grey-200);
@@ -29,5 +35,17 @@
   &:hover {
     color: var(--color-text);
     border-bottom-color: var(--color-text);
+  }
+}
+
+@media (--tablet) {
+  .navigationContainer {
+    height: 75px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .favoritesLink, .breadcrumbsLinkContainer {
+    position: absolute;
   }
 }

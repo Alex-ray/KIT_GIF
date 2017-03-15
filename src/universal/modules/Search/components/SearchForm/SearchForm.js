@@ -1,10 +1,16 @@
 import React, {PropTypes, Component} from 'react';
+import classNames from 'classnames';
 
 import {
   form,
   input,
   submit
 } from './search-form.css';
+
+import {
+  contentWidth
+} from 'universal/styles/layout.css';
+
 
 class SearchForm extends Component {
   static propTypes = {
@@ -52,7 +58,7 @@ class SearchForm extends Component {
     } = this.state;
 
     return (
-      <form className={form} onSubmit={this.handleSubmit}>
+      <form className={classNames(form, contentWidth)} onSubmit={this.handleSubmit}>
         <input className={input} type='text' value={value} onChange={this.handleChange} placeholder='search' />
         <input className={submit} value='Search' type='submit' />
       </form>

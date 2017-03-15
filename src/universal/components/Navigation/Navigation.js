@@ -4,6 +4,7 @@ import {Link} from 'react-router';
 import Breadcrumbs from 'react-breadcrumbs';
 
 import {
+  navigationContainer,
   favoritesLink,
   breadcrumbsLink,
   breadcrumbsLinkContainer
@@ -16,7 +17,7 @@ class Navigation extends Component {
   };
   render () {
     return (
-      <nav>
+      <nav className={navigationContainer}>
         <Link className={favoritesLink} to={{pathname: '/favorites'}}>favorites</Link>
         <Breadcrumbs
           routes={this.props.routes}
