@@ -48,6 +48,14 @@ and upload all the build files to that CDN and run the application on a node ser
 
 ## TODO:
 
+Shuffle Animations and loading states. (I was going to user React)
+
 Gif Image Loading States - Ideally we want to show a loading state for the preview
 image of gif when it is being downloaded to the clients browser cache. This becomes
 apparent when shuffling new GIFS that have not been downloaded to the client.
+
+Route Animations.
+
+Better breadcrumb design, not very intuitive, general navigation re-think.
+
+Rethink Color Palette.
