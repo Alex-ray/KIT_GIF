@@ -59,3 +59,5 @@ Route Animations.
 Better breadcrumb design, not very intuitive, general navigation re-think.
 
 Rethink Color Palette.
+
+Scroll to the top when each route is loaded.
