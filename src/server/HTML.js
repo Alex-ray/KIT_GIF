@@ -44,18 +44,66 @@ class HTML extends Component {
       </Provider>
     );
 
+    const noFOUC = `(
+      function (doc) {
+        if (doc) {
+          console.log(doc);
+          doc.documentElement.className=doc.documentElement.className.replace(/no-js/,'js');
+          doc.addEventListener('DOMContentLoaded', function () {
+            doc.getElementById('root').style.display = 'block';
+          });
+        }
+      }
+    )(document)`;
 
     return (
-     <html>
+     <html className='no-js' >
        <head>
+
+        <script dangerouslySetInnerHTML={{__html: noFOUC}} />
+
          <meta charSet="utf-8"/>
           <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto|Material+Icons" rel="stylesheet" />
 
          <title>{title}</title>
+
+         <style type='text/css'>
+           {
+             `
+              .no-js #root {
+                display: none;
+              }
+
+             .opacity-loader {
+               position: fixed;
+               top: 0;
+               bottom: 0;
+               right: 0;
+               left: 0;
+               z-index: 300;
+               background: white;
+
+               transition: opacity 350ms ease-in-out, max-width 0ms linear 350ms, max-height 0ms linear 350ms;
+               --webkit-transition: opacity 350ms ease-in-out, max-width 0ms linear 350ms, max-height 0ms linear 350ms;
+
+               opacity: 1;
+             }
+
+             .js .opacity-loader {
+               opacity: 0;
+               max-width: 0;
+               max-height: 0;
+             }
+
+             `
+           }
+         </style>
        </head>
        <body>
+         <div className='opacity-loader'></div>
          <script dangerouslySetInnerHTML={{__html: initialState}} />
-         {PROD ? <div id="root" dangerouslySetInnerHTML={{__html: root}}></div> : <div id="root"></div>}
+         
+         {PROD ? <div id="root" style={{display: 'none'}} dangerouslySetInnerHTML={{__html: root}}></div> : <div id="root"></div>}
          {PROD && <script dangerouslySetInnerHTML={{__html: manifest.text}}/>}
          <script src={PROD ? app.js : '/static/app.js'} />
        </body>
