@@ -6,6 +6,7 @@ import {
 
 export default (store) => {
   return {
+    name: 'Search',
     path: '/:query',
     getComponent: (nextState, cb) => {
      System.import('universal/modules/Search/containers/SearchQuery/SearchQueryContainer.js')
