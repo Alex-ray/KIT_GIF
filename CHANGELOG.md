@@ -10,3 +10,8 @@ All notable changes to this project will be documented in this file.
 - Hot Module Reloading
 - Server Side Rendering
 - Lazy Loading
+- Adds GIF search
+- Adds GIF info page
+- Introduces favorite functionality
+- Includes breadcrumb navigation
+- Adds animations and better loading states.
