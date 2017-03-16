@@ -9,7 +9,7 @@
   --color-divider: var(--palette-grey-200);
   --color-background: var(--color-white);
   --color-text: var(--palette-blue-grey-700);
-  --color-text-secondary: var(--palette-blue-grey-500);
+  --color-text-secondary: var(--palette-blue-500);
 
   --color-primary: var(--palette-indigo-500);
   --color-primary-dark: var(--palette-indigo-700);
@@ -109,19 +109,4 @@
     }
   }
 
-  --link: {
-    color: var(--color-text);
-    font-family: var(--preferred-font);
-    text-decoration: none;
-    font-size: var(--font-size-small);
-
-    border-bottom: solid 3px var(--color-text);
-
-    transition: border-bottom-color 350ms ease-in-out, color 350ms ease-in-out;
-
-    &:hover {
-      color: var(--color-text-secondary);
-      border-bottom-color: var(--color-text-secondary);
-    }
-  }
 }

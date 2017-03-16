@@ -1,4 +1,5 @@
 @import 'universal/styles/variables.css';
+@import 'universal/styles/typography.css';
 
 .navigationContainer {}
 
@@ -27,6 +28,7 @@
   @apply --reset;
   @apply --link;
 
+
   padding: calc(var(--unit)* 0.5) 0;
 
   background-color: white;
@@ -35,6 +37,7 @@
 
   color: var(--palette-blue-grey-200);
   border-bottom-color: var(--palette-blue-grey-200);
+  bottom-border-width: 3px;
 
   &:hover {
     color: var(--color-text);

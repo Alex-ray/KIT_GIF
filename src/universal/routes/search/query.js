@@ -6,6 +6,7 @@ import {
 
 export default (store) => {
   return {
+    staticName: true,
     name: 'Search',
     path: '/:query',
     getComponent: (nextState, cb) => {

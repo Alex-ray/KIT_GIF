@@ -7,6 +7,22 @@
     text-overflow: ellipsis;
     overflow: hidden;
   }
+
+  --link: {
+    color: var(--color-text);
+    font-family: var(--preferred-font);
+    text-decoration: none;
+    font-size: var(--font-size-small);
+
+    border-bottom: solid 2px var(--color-text);
+
+    transition: border-bottom-color 350ms ease-in-out, color 350ms ease-in-out;
+
+    &:hover {
+      color: var(--color-text-secondary);
+      border-bottom-color: var(--color-text-secondary);
+    }
+  }
 }
 
 .title {
@@ -20,6 +36,13 @@
   margin: calc(var(--unit)*4) 0;
 }
 
+.link {
+  @apply --reset;
+  @apply --link;
+
+  border-bottom-size: 2px;
+}
+
 
 .description {
   color: var(--color-text);
@@ -27,7 +50,10 @@
   font-family: var(--preferred-font);
   font-size: 28px;
   font-weight: var(--font-weight-semi-bold);
-  text-transform: capitalize;
 
   margin: calc(var(--unit)*4) 0;
+
+  & small {
+    font-size: var(--font-size-small);
+  }
 }

@@ -14,7 +14,8 @@ import {
 
 import {
   title,
-  description
+  description,
+  link
 } from 'universal/styles/typography.css';
 
 class SearchFavorites extends Component {
@@ -36,7 +37,7 @@ class SearchFavorites extends Component {
         <h1 className={title}>Favorites</h1>
         {!favoritesEmpty && <SearchItemList source={source} query={query}/>}
         {favoritesEmpty && (
-          <p className={description}>Looks like your haven't favorited anyting yet!</p>
+          <p className={description}>No favorites yet! <small>( Hint: <Link className={link} to={{pathname: '/pizza'}}>Search Pizza</Link> )</small></p>
         )}
       </aside>
     );
