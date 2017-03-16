@@ -20,7 +20,7 @@ class Navigation extends Component {
     let isOnFavoritePage = this.props.location.pathname === '/favorites';
 
     let actionLink = isOnFavoritePage ?
-      <Link className={favoritesLink} to={{pathname: '/'}}>search</Link>:
+      <Link className={favoritesLink} to={{pathname: '/'}}>home</Link>:
       <Link className={favoritesLink} to={{pathname: '/favorites'}}>favorites</Link> ;
 
     return (
